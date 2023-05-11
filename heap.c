@@ -74,22 +74,19 @@ void reorderHeapDown(Heap* pq, int index){
   
   if(pq->heapArray[left].priority>pq->heapArray[index].priority){
     swap(pq->heapArray, left, index);
-    view(pq); printf("3");
     reorderHeapDown(pq,index);
   }
   else if (pq->heapArray[right].priority>pq->heapArray[index].priority){
     swap(pq->heapArray, right, index);
-    view(pq); printf("4");
     reorderHeapDown(pq,index);
   }
   else return;
 }
 
 void heap_pop(Heap* pq){
+  pq->heapArray[0].priority=0;
   swap(pq->heapArray,0,pq->size-1);
-  view(pq); printf("1");
   pq->size--;
-  view(pq); printf("2");
   reorderHeapDown(pq,0);
 }
 
