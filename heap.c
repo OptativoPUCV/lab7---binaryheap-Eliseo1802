@@ -19,6 +19,7 @@ typedef struct Heap{
 
 void* heap_top(Heap* pq){
   void* pr = pq->heapArray[0].data;
+  if(pq->size==0) return NULL;
   return pr;
 }
 
