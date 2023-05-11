@@ -76,7 +76,7 @@ void reorderHeapDown(Heap* pq, int index){
 void heap_pop(Heap* pq){
   swap(pq->heapArray,0,pq->size-1);
   reorderHeapDown(pq,0);
-  //pq->size--;
+  pq->size--;
 }
 
 Heap* createHeap(){
