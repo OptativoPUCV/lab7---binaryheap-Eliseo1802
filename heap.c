@@ -38,8 +38,8 @@ void reorderHeap(Heap* pq, int index){
 
 void heap_push(Heap* pq, void* data, int priority){
   if(pq->size==pq->capac){
-    pq->heapArray = realloc(pq->heapArray,sizeof(heapElem)*(pq->capac*2+1));
-    pq->capac*=2;
+    pq->heapArray = realloc(pq->heapArray,sizeof(heapElem)*pq->capac*2);
+    pq->capac*=2+1;
   }
   pq->size++;
   
