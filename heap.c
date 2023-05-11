@@ -59,8 +59,8 @@ void reorderHeapDown(Heap* pq, int index){
   left = (2*index)+1;
   right = (2*index)+2;
   
-  if(left<pq->size && right<pq->size)
-    return;
+  //if(left<pq->size && right<pq->size)
+    //return;
 
   if(pq->heapArray[left].priority>pq->heapArray[index].priority){
     swap(pq->heapArray, left, index);
