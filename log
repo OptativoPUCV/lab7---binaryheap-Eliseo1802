@@ -158,3 +158,32 @@ heap.c:77:3: error: implicit declaration of function ‘reorderHeapDown’; did 
 cc1: all warnings being treated as errors
 Compilation failed
 0d94f3c
+Thu 11 May 2023 03:06:13 AM UTC: 
+ heap.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+In file included from test.c:4:
+heap.c: In function ‘reorderHeapDown’:
+heap.c:65:8: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘priorities’
+   65 |   if (H->priorities[left] > H->priorities[index]) {
+      |        ^~
+heap.c:65:30: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘priorities’
+   65 |   if (H->priorities[left] > H->priorities[index]) {
+      |                              ^~
+heap.c:66:11: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘priorities’
+   66 |     swap(H->priorities, left, index);
+      |           ^~
+heap.c:68:15: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘priorities’
+   68 |   } else if (H->priorities[right] > H->priorities[index]) {
+      |               ^~
+heap.c:68:38: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘priorities’
+   68 |   } else if (H->priorities[right] > H->priorities[index]) {
+      |                                      ^~
+heap.c:69:11: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘priorities’
+   69 |     swap(H->priorities, right, index);
+      |           ^~
+heap.c:58:20: error: unused variable ‘aux’ [-Werror=unused-variable]
+   58 |   int left, right, aux;
+      |                    ^~~
+cc1: all warnings being treated as errors
+Compilation failed
+a7c497e
