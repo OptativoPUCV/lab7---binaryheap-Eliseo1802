@@ -16,19 +16,6 @@ typedef struct Heap{
   int capac;
 } Heap;
 
-
-
-void view(Heap* h){
-    int i;
-    printf("\t[");
-    for(i=0; i<h->size; i++){
-        printf("%d ",h->heapArray[i].priority);
-    }
-    printf("]\n");
-}
-
-
-
 void* heap_top(Heap* pq){
   void* pr = pq->heapArray[0].data;
   if(pq->size==0) return NULL;
@@ -45,7 +32,7 @@ void reorderHeapUp(Heap* pq, int index){
   int parent = (index-1)/2;
   int aux;
 
-  if (pq->heapArray[parent].priority >= pq->heapArray[index].priority)
+  if(pq->heapArray[parent].priority >= pq->heapArray[index].priority)
     return;
   else{
     aux = pq->heapArray[parent].priority;
@@ -76,7 +63,7 @@ void reorderHeapDown(Heap* pq, int index){
     swap(pq->heapArray, left, index);
     reorderHeapDown(pq,index);
   }
-  else if (pq->heapArray[right].priority>pq->heapArray[index].priority){
+  else if(pq->heapArray[right].priority>pq->heapArray[index].priority){
     swap(pq->heapArray, right, index);
     reorderHeapDown(pq,index);
   }
@@ -95,6 +82,5 @@ Heap* createHeap(){
   new->size = 0;
   new->capac = 3;
   new->heapArray = (heapElem*)calloc(new->capac,sizeof(heapElem));
-
   return new;
 }
