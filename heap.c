@@ -37,11 +37,12 @@ void reorderHeap(Heap* pq, int index){
 }
 
 void heap_push(Heap* pq, void* data, int priority){
+  pq->size++;
   if(pq->size==pq->capac){
     pq->heapArray = realloc(pq->heapArray,sizeof(heapElem)*pq->capac*2);
     pq->capac*=2;
   }
-  pq->size++;
+  
   
   pq->heapArray[pq->size-1].data = data;
   pq->heapArray[pq->size-1].priority = priority;
