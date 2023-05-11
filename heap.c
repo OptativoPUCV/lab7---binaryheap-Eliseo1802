@@ -22,8 +22,8 @@ void* heap_top(Heap* pq){
   return pr;
 }
 
-void swap(int *arr, int i1, int i2){
-  int aux = arr[i2];
+void swap(heapElem *arr, int i1, int i2){
+  heapElem aux = arr[i2];
   arr[i2] = arr[i1];
   arr[i1] = aux;
 }
@@ -40,6 +40,18 @@ void reorderHeapUp(Heap* pq, int index){
     pq->heapArray[index].priority = aux;
     reorderHeapUp(pq, parent);
   }
+}
+
+void heap_push(Heap* pq, void* data, int priority){
+  if(pq->size==pq->capac){
+    pq->heapArray = realloc(pq->heapArray,sizeof(heapElem)*pq->capac*2);
+    pq->capac = pq->capac*2+1;
+  }
+  pq->size++;
+  
+  pq->heapArray[pq->size-1].data = data;
+  pq->heapArray[pq->size-1].priority = priority;
+  reorderHeapUp(pq, pq->size-1);
 }
 
 void heapify_d(Heap *H, int index){
@@ -60,28 +72,10 @@ void heapify_d(Heap *H, int index){
     return;
 }
 
-void heap_push(Heap* pq, void* data, int priority){
-  if(pq->size==pq->capac){
-    pq->heapArray = realloc(pq->heapArray,sizeof(heapElem)*pq->capac*2);
-    pq->capac = pq->capac*2+1;
-  }
-  pq->size++;
-  
-  pq->heapArray[pq->size-1].data = data;
-  pq->heapArray[pq->size-1].priority = priority;
-  reorderHeapUp(pq, pq->size-1);
-}
-
-void removeHeap(Heap *H, int data) {
-  int lastNode = H->size - 1;
-  swap(H->priorities, root, lastNode);
-  heapify_d(H, root);
-  H->size--;
-}
-
 void heap_pop(Heap* pq){
-  pq->heapArray[0] = pq->heapArray[pq->size-1];
+  swap(pq->heapArray,0,pq->size-1);
   reorderHeapDown(pq);
+  pq->size--;
 }
 
 Heap* createHeap(){
