@@ -18,7 +18,14 @@ typedef struct Heap{
 
 
 
-
+void view(Heap* h){
+    int i;
+    printf("\t[");
+    for(i=0; i<h->size; i++){
+        printf("%d ",h->heapArray[i].priority);
+    }
+    printf("]\n");
+}
 
 
 
@@ -67,12 +74,12 @@ void reorderHeapDown(Heap* pq, int index){
   
   if(pq->heapArray[left].priority>pq->heapArray[index].priority){
     swap(pq->heapArray, left, index);
-    view_array(pq); printf("3");
+    view(pq); printf("3");
     reorderHeapDown(pq,index);
   }
   else if (pq->heapArray[right].priority>pq->heapArray[index].priority){
     swap(pq->heapArray, right, index);
-    view_array(pq); printf("4");
+    view(pq); printf("4");
     reorderHeapDown(pq,index);
   }
   else return;
@@ -80,9 +87,9 @@ void reorderHeapDown(Heap* pq, int index){
 
 void heap_pop(Heap* pq){
   swap(pq->heapArray,0,pq->size-1);
-  view_array(pq); printf("1");
+  view(pq); printf("1");
   pq->size--;
-  view_array(pq); printf("2");
+  view(pq); printf("2");
   reorderHeapDown(pq,0);
 }
 

@@ -302,3 +302,9 @@ heap.c:70:5: note: previous implicit declaration of ‘view_array’ with type �
 cc1: all warnings being treated as errors
 Compilation failed
 94740cf
+Thu 11 May 2023 03:47:18 AM UTC: 
+ heap.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+ tests:  7|1
+total_score: 55/70
+63b084a
