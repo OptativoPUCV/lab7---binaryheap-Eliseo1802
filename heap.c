@@ -64,11 +64,11 @@ void reorderHeapDown(Heap* pq, int index){
 
   if(pq->heapArray[left].priority>pq->heapArray[index].priority){
     swap(pq->heapArray, left, index);
-    reorderHeapDown(pq,left);
+    reorderHeapDown(pq,index);
   }
   else if (pq->heapArray[right].priority>pq->heapArray[index].priority){
     swap(pq->heapArray, right, index);
-    reorderHeapDown(pq,right);
+    reorderHeapDown(pq,index);
   }
   else return;
 }
