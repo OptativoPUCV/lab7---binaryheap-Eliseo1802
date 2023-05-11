@@ -54,22 +54,23 @@ void heap_push(Heap* pq, void* data, int priority){
   reorderHeapUp(pq, pq->size-1);
 }
 
-void reorderHeapDown(Heap *H, int index){
-  int left, right, aux;
+void reorderHeapDown(Heap* pq, int index){
+  int left,right;
+  left = (2*index)+1;
+  right = (2*index)+2;
   
-  left = (2 * index) + 1;
-  right = (2 * index) + 2;
-  if (left < H->size && right < H->size)
+  if(left<pq->size && right<pq->size)
     return;
 
-  if (H->priorities[left] > H->priorities[index]) {
-    swap(H->priorities, left, index);
-    reorderHeapDown(H,left);
-  } else if (H->priorities[right] > H->priorities[index]) {
-    swap(H->priorities, right, index);
-    reorderHeapDown(H,right);
-  } else
-    return;
+  if(pq->heapArray[left].priority>pq->heapArray[index].priority){
+    swap(pq->heapArray, left, index);
+    reorderHeapDown(pq,left);
+  }
+  else if (pq->heapArray[right].priority>pq->heapArray[index].priority){
+    swap(pq->heapArray, right, index);
+    reorderHeapDown(pq,right);
+  }
+  else return;
 }
 
 void heap_pop(Heap* pq){
